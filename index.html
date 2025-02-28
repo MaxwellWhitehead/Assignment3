@@ -1,0 +1,156 @@
+//"StAuth10244: I Max Whitehead, 000782451 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else."
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+    
+        <title>Assignment 3</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <style>
+
+            h1{
+                text-align: center;
+                background-color: white;
+                width: 100%; 
+            
+            }
+
+            .deckOfCards{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                margin-top: 30px;
+            }
+
+            .card{
+                height: 170px;
+                width: 120px;
+                background-color:white;
+                justify-content: center;
+                border-radius: 10px;
+                border: 5px solid black;
+                
+            
+            }
+
+           .topCorner{
+                font-size: large;
+                top:5px;
+                left:5px
+            }
+
+            .bottomCorner{
+                font-size: large;
+                bottom:5px;
+                left:5px
+            }
+
+        
+            img {
+                position: absolute;
+                align-items: center;
+                margin-top: 45px;
+                margin-left: 35px;
+                width: 50px;
+                height: 50px;
+          
+
+            }
+
+
+
+
+            .btnRowStyle{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .btnStyle1{
+                
+                background-color: brown;
+                color: white;
+                
+            }
+
+            .btnStyle2{
+                background-color: green;
+                color: white;
+            }
+
+            button{
+                height: 100px;
+                width: 70%;
+                font-size: large;
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+
+            body{
+                background-color: black;
+                min-width: 600px;
+                overflow-x: hidden;
+            }
+
+
+
+        </style>
+    </head> 
+    <body>
+
+        <h1>Assignment 3: Deck Of Cards</h1>
+
+        <div id="deckOfCards" class="deckOfCards">
+
+            <div class="card">
+                <div class = "topCorner" id = "cardType">4</div>
+                <img src = "club.png"></img>
+            </div>
+
+        </div>
+
+
+        <div class = "btnRowStyle">
+            <button class = "btnStyle1">Deal 5</button>
+            <button class = "btnStyle1">Deal 7</button>
+        </div>
+
+        <div class = "btnRowStyle">
+            <button class = "btnStyle2">Reset</button>
+            <button class = "btnStyle2">Toss</button>
+           
+        </div>
+
+        <div class = "btnRowStyle">
+            <button>Wildcard</button>
+            <button>regroup</button>
+        </div>
+
+        <script type="text/babel">
+
+            function card(props){
+                return(<div class = "card">
+                            <div class = "topCorner" id = "cardType">4</div>
+                            <img src = "club.png"></img>
+                        </div>);
+            }
+
+            function cardDeck(props){
+                const [cards, setCards] = React.useState([]);
+                const [cardId, setCardId] = React.useState(0);
+                const [imgId, setImgId] = React.useState(0);
+
+
+            }
+
+
+        </script>
+    </body>
+</html>
