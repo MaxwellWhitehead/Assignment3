@@ -120,11 +120,11 @@
         <script type="text/babel">
 
 
-            function card({number, suit}){
+            function Card({number, suit}){
                 return(
                     <div className = "card">
                         <div className = "topCorner" id = "cardType">{number}</div>
-                        <img src = {suit} />
+                        <img src = {suit} alt = "Card Suit" />
                     </div>
                 );
             }
