@@ -65,7 +65,7 @@
             }
 
 
-            
+
             .offClick{
                 border:5px solid black;
             }
@@ -162,14 +162,34 @@
 
             // Presents for presenting a row of cards
 
-            function cardDeck(props){
+            function createDeck(props){
                 const [cards, setCards] = React.useState([]);
                 const [cardId, setCardId] = React.useState(0);
                 const [imgId, setImgId] = React.useState(0);
 
+                
+                function createCard(){
+
+                    let currentCard = cardId;
+                }
 
 
 
+
+                function clickSwitch(cardId){
+                    let clickedCard = [...cards];
+
+                    for (let i = 0; i < clickedCard.length; i++){
+
+                        if(clickedCard[i].id == currentCard){
+                            if(clickedCard[i] == "off")
+                                clickedCard[i].status = "onClick";
+                            else
+                                clickedCard[i].status = "offClick";
+                            
+                        }
+                    }
+                }
 
 
 
