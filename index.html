@@ -122,8 +122,8 @@
 
             function card({number, suit}){
                 return(
-                    <div class = "card">
-                        <div class = "topCorner" id = "cardType">{number}</div>
+                    <div className = "card">
+                        <div className = "topCorner" id = "cardType">{number}</div>
                         <img src = {suit} />
                     </div>
                 );
@@ -149,7 +149,7 @@
                         let suit = suits[Math.floor(Math.random() * suits.length)];
                         deltCards.push({number: num, suit: suit});
                     }
-                    setCards(dealCards)
+                    setCards(deltCards);
                 }
 
 
@@ -191,30 +191,30 @@
                         <h1>Assignment 3: Deck Of Cards</h1>
 
 
-                        <div class = "deckOfCards">
+                        <div className = "deckOfCards">
                             {cards.map((card, index) => (
                                 <Card key = {index} number = {card.number} suit={card.suit} />
                             ))}
 
                         </div>
 
-                        <div class = "btnRowStyle">
-                            <button class = "btnStyle1" onClick={() => dealCards(5)}>Deal 5</button>
-                            <button class = "btnStyle1" onClick={() => dealCards(7)}>Deal 7</button>
+                        <div className = "btnRowStyle">
+                            <button className = "btnStyle1" onClick={() => dealCards(5)}>Deal 5</button>
+                            <button className = "btnStyle1" onClick={() => dealCards(7)}>Deal 7</button>
                         </div>
 
-                        <div class = "btnRowStyle">
-                            <button class = "btnStyle2" onClick = {resetDeck}>Reset</button>
-                            <button class = "btnStyle2">Toss</button>
+                        <div className = "btnRowStyle">
+                            <button className = "btnStyle2" onClick = {resetDeck}>Reset</button>
+                            <button className = "btnStyle2">Toss</button>
                         </div>
 
-                        <div class = "btnRowStyle">
+                        <div className = "btnRowStyle">
                             <button>Wildcard</button>
                             <button>regroup</button>
                         </div>
                         
                     </div>
-                )
+                );
 
             }
 
