@@ -7,9 +7,9 @@
     <head>
     
         <title>Assignment 3</title>
+
         <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
         <style>
@@ -120,27 +120,46 @@
         <script type="text/babel">
 
 
-            function card(props){
-                return(<div class = "card">
-                            <div class = "topCorner" id = "cardType">4</div>
-                            <img src = "club.png"></img>
-                        </div>);
+            function card({number, suit}){
+                return(
+                    <div class = "card">
+                        <div class = "topCorner" id = "cardType">{number}</div>
+                        <img src = {suit} />
+                    </div>
+                );
             }
 
 
 
             // Presents for presenting a row of cards
 
-            function createDeck(props){
+            function CreateDeck(){
                 const [cards, setCards] = React.useState([]);
-                const [cardId, setCardId] = React.useState(0);
-                const [imgId, setImgId] = React.useState(0);
+
+                //const [cardId, setCardId] = React.useState(0);
+                //const [imgId, setImgId] = React.useState(0);
+
+                const suits = ["club.png, heart.png, spade.png, diamond.png"];
+                const cardType = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
                 
-                function createCard(){
+                function dealCards(numCount){
 
-                    let currentCard = cardId;
+                    let deltCards = [];
+                    for(let i = 0; i < numCount; i++){
+                        let num = numbers[Math.floor(Math.random() * cardType.length)];
+                        let suit = suits[Math.floor(Math.random() * suits.length)];
+                        dealCards.push({number: num, suit: suit});
+                    }
+                    setCards(newCards)
                 }
+
+
+
+                function resetDeck(){
+                    setCards([]);
+                }
+
 
 
 
@@ -168,29 +187,33 @@
                     <div>
                         <h1>Assignment 3: Deck Of Cards</h1>
 
-                        <div id="deckOfCards" class="deckOfCards">
 
-                            <div class="card">
-                                <div class = "topCorner" id = "cardType">4</div>
-                                <img src = "club.png"></img>
-                            </div>
+                        <div class = "deckOfCards">
+                            {cards.map((card, index) => (
+                                <Card key = {index} number = {card.number} suit={card.suit} />
+                            ))}
 
-
-                            <div class = "btnRowStyle">
-                                <button class = "btnStyle1">Deal 5</button>
-                                <button class = "btnStyle1">Deal 7</button>
-                            </div>
-
-                            <div class = "btnRowStyle">
-                                <button class = "btnStyle2">Reset</button>
-                                <button class = "btnStyle2">Toss</button>
-                            </div>
-
-                            <div class = "btnRowStyle">
-                                <button>Wildcard</button>
-                                <button>regroup</button>
-                            </div>
                         </div>
+
+                        <div class = "btnRowStyle">
+                            <button class = "btnStyle1" onClick={() => dealCards(5)}>Deal 5</button>
+                            <button class = "btnStyle1" onClick={() => dealCards(7)}>Deal 7</button>
+                        </div>
+
+
+
+
+
+                        <div class = "btnRowStyle">
+                            <button class = "btnStyle2" onClick = {resetDeck}>Reset</button>
+                            <button class = "btnStyle2">Toss</button>
+                        </div>
+
+                        <div class = "btnRowStyle">
+                            <button>Wildcard</button>
+                            <button>regroup</button>
+                        </div>
+                        
                     </div>
                 )
 
@@ -198,7 +221,7 @@
 
             const container = document.getElementById('root');
             const root = ReactDOM.createRoot(container);
-            root.render(<createDeck />);
+            root.render(<CreateDeck />);
 
         </script>
     </body>
