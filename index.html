@@ -136,10 +136,8 @@
             function CreateDeck(){
                 const [cards, setCards] = React.useState([]);
 
-                //const [cardId, setCardId] = React.useState(0);
-                //const [imgId, setImgId] = React.useState(0);
 
-                const suits = ["club.png, heart.png, spade.png, diamond.png"];
+                const suits = ["club.png", "heart.png", "spade.png", "diamond.png"];
                 const cardType = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
                 
@@ -147,11 +145,11 @@
 
                     let deltCards = [];
                     for(let i = 0; i < numCount; i++){
-                        let num = numbers[Math.floor(Math.random() * cardType.length)];
+                        let num = cardType[Math.floor(Math.random() * cardType.length)];
                         let suit = suits[Math.floor(Math.random() * suits.length)];
-                        dealCards.push({number: num, suit: suit});
+                        deltCards.push({number: num, suit: suit});
                     }
-                    setCards(newCards)
+                    setCards(dealCards)
                 }
 
 
@@ -164,6 +162,9 @@
 
 
 
+                //TODO: Work on OnClick function for when the user clicks on the card
+
+                /**
                 function clickSwitch(cardId){
                     let clickedCard = [...cards];
 
@@ -180,6 +181,8 @@
 
                     setCards(clickedCard)
                 }
+
+                **/
 
 
 
@@ -199,10 +202,6 @@
                             <button class = "btnStyle1" onClick={() => dealCards(5)}>Deal 5</button>
                             <button class = "btnStyle1" onClick={() => dealCards(7)}>Deal 7</button>
                         </div>
-
-
-
-
 
                         <div class = "btnRowStyle">
                             <button class = "btnStyle2" onClick = {resetDeck}>Reset</button>
