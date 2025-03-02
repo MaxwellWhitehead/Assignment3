@@ -117,9 +117,9 @@
         <script type="text/babel">
 
 
-            function Card({number, suit}){
+            function Card({number, suit, onClick}){
                 return(
-                    <div className = "card">
+                    <div className = "card" onClick={onClick}>
                         <div className = "topCorner" id = "cardType">{number}</div>
                         <img src = {suit} alt = "Card Suit" />
                     </div>
@@ -133,6 +133,7 @@
             function CreateDeck(){
                 const [cards, setCards] = React.useState([]);
                 const [cardID, setCardID] = React.useState(0);
+                const [selectedCards, setSelectedCards] = React.useState(new Set());
 
                 const suits = ["club.png", "heart.png", "spade.png", "diamond.png"];
                 const cardType = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
@@ -171,45 +172,31 @@
                             suit = suits[Math.floor(Math.random() * suits.length)];
                         }
                 
-                        deltCards.push({number: num, suit: suit});
+                        deltCards.push({id: i, number: num, suit: suit});
                     }
                     setCards(deltCards);
+                    setSelectedCards(new Set());
                 }
 
 
                 function resetDeck(){
                     setCards([]);
+                    setSelectedCards(new Set());
                 }
 
 
                 function clickCard(cardID){
 
-                    let newCards = [...cards];
-
-                    for (let i = 0; i < newCards.length; i++){
-                        if(newCards[i].id == cardID){
-                            if(newCards[i].status == "offClick" ){
-                                newCards[i].status == "onClick";
-                            } else {
-                                newCards[i].status == "offClick";
-                            }
+                    setSelectedCards(prev => {
+                        const newSelected = new Set(prev);
+                        if(newSelected.has(cardID)){
+                            newSelected.delete(cardID);
+                        } else {
+                            newSelected.add(cardID);
                         }
-                    }
-
-                    setCards(newCards);
-
+                        return newSelected;
+                    });
                 }
-
-               
-
-
-                
-
-
-
-
-                //TODO: Work on OnClick function for when the user clicks on the card
-
 
                 return (
                     <div>
@@ -219,9 +206,10 @@
                         <div className = "deckOfCards" >
                             {cards.map((card, index) => (
                                 <Card 
-                                    key = {index} 
+                                    key = {card.id} 
                                     number = {card.number} 
                                     suit={card.suit}
+                                    isSelected={selectedCards.has(card.id)}
                                     onClick = {() => clickCard(card.id)} />
                             ))}
 
