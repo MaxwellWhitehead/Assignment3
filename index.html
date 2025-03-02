@@ -65,11 +65,11 @@
             }
 
             .offClick{
-                border:5px solid black;
+                border-color:black;
             }
 
             .onClick{
-                border:5px solid yellow;
+                border-color: green;
             }
 
 
@@ -103,6 +103,7 @@
                 background-color: black;
                 min-width: 600px;
                 overflow-x: hidden;
+                
             }
 
 
@@ -131,16 +132,14 @@
 
             function CreateDeck(){
                 const [cards, setCards] = React.useState([]);
-
+                const [cardID, setCardID] = React.useState(0);
 
                 const suits = ["club.png", "heart.png", "spade.png", "diamond.png"];
                 const cardType = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
                 const jokerSuit = ["jokerHeart.png","jokerDiamond.png","jokerClub.png","jokerSpade.png"];
                 const queenSuit = ["queenHeart.png","queenDiamond.png","queenClub.png","queenSpade.png"];
-
                 const kingSuit = ["kingHeart.png","kingDiamond.png","kingClub.png","kingSpade.png"];
-
                 const aceSuit = ["aceHeart.png","aceDiamond.png","aceClub.png","aceSpade.png"];
 
                 
@@ -178,37 +177,38 @@
                 }
 
 
-
                 function resetDeck(){
                     setCards([]);
                 }
 
 
+                function clickCard(cardID){
+
+                    let newCards = [...cards];
+
+                    for (let i = 0; i < newCards.length; i++){
+                        if(newCards[i].id == cardID){
+                            if(newCards[i].status == "offClick" ){
+                                newCards[i].status == "onClick";
+                            } else {
+                                newCards[i].status == "offClick";
+                            }
+                        }
+                    }
+
+                    setCards(newCards);
+
+                }
+
+               
+
+
+                
+
 
 
 
                 //TODO: Work on OnClick function for when the user clicks on the card
-
-                /**
-                function clickSwitch(cardId){
-                    let clickedCard = [...cards];
-
-                    for (let i = 0; i < clickedCard.length; i++){
-
-                        if(clickedCard[i].id == currentCard){
-                            if(clickedCard[i] == "off")
-                                clickedCard[i].status = "onClick";
-                            else
-                                clickedCard[i].status = "offClick";
-                            
-                        }
-                    }
-
-                    setCards(clickedCard)
-                }
-
-                **/
-
 
 
                 return (
@@ -216,9 +216,13 @@
                         <h1>Assignment 3: Deck Of Cards</h1>
 
 
-                        <div className = "deckOfCards">
+                        <div className = "deckOfCards" >
                             {cards.map((card, index) => (
-                                <Card key = {index} number = {card.number} suit={card.suit} />
+                                <Card 
+                                    key = {index} 
+                                    number = {card.number} 
+                                    suit={card.suit}
+                                    onClick = {() => clickCard(card.id)} />
                             ))}
 
                         </div>

@@ -64,8 +64,6 @@
 
             }
 
-
-
             .offClick{
                 border:5px solid black;
             }
@@ -73,8 +71,6 @@
             .onClick{
                 border:5px solid yellow;
             }
-
-
 
 
             .btnRowStyle{
@@ -107,6 +103,7 @@
                 background-color: black;
                 min-width: 600px;
                 overflow-x: hidden;
+                
             }
 
 
@@ -140,10 +137,12 @@
                 const suits = ["club.png", "heart.png", "spade.png", "diamond.png"];
                 const cardType = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
- 		const jokerSuit = ["jokerHeart.png","jokerDiamond.png","jokerClub.png","jokerSpade.png"];
+                const jokerSuit = ["jokerHeart.png","jokerDiamond.png","jokerClub.png","jokerSpade.png"];
                 const queenSuit = ["queenHeart.png","queenDiamond.png","queenClub.png","queenSpade.png"];
+
                 const kingSuit = ["kingHeart.png","kingDiamond.png","kingClub.png","kingSpade.png"];
-                const aceSuit = ["aceHeart.png","aceDiamond.png","aceClub.png","aceSpade"];
+
+                const aceSuit = ["aceHeart.png","aceDiamond.png","aceClub.png","aceSpade.png"];
 
                 
                 function dealCards(numCount){
@@ -151,7 +150,29 @@
                     let deltCards = [];
                     for(let i = 0; i < numCount; i++){
                         let num = cardType[Math.floor(Math.random() * cardType.length)];
-                        let suit = suits[Math.floor(Math.random() * suits.length)];
+
+                        let suit;
+
+                        if(num == "A")
+                        {
+                            suit = aceSuit[Math.floor(Math.random() * aceSuit.length)];
+                        } 
+                        else if (num == "J")
+                        {
+                            suit = jokerSuit[Math.floor(Math.random() * jokerSuit.length)];
+                        }
+                        else if (num == "Q")
+                        {
+                            suit = queenSuit[Math.floor(Math.random() * queenSuit.length)];
+                        }
+                        else if (num == "K")
+                        {
+                            suit = kingSuit[Math.floor(Math.random() * kingSuit.length)];
+                        }
+                        else {
+                            suit = suits[Math.floor(Math.random() * suits.length)];
+                        }
+                
                         deltCards.push({number: num, suit: suit});
                     }
                     setCards(deltCards);
@@ -163,6 +184,9 @@
                     setCards([]);
                 }
 
+
+
+                
 
 
 
@@ -188,6 +212,8 @@
                 }
 
                 **/
+
+                function 
 
 
 
