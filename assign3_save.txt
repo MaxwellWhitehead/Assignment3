@@ -124,10 +124,15 @@
                 );
             }
 
+            //https://stackoverflow.com/questions/58806883/how-to-use-set-with-reacts-usestate
+
+            //TODO: Work on Toss, Wildcard, and Regroup buttons next (starting with toss)
+
             function CreateDeck(){
                 const [cards, setCards] = React.useState([]);
                 const [cardID, setCardID] = React.useState(0);
                 const [selectedCards, setSelectedCards] = React.useState(new Set());
+                const [toDelete, setToDelete] = React.useState("");
 
                 const suits = ["club.png", "heart.png", "spade.png", "diamond.png"];
                 const cardType = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
@@ -183,6 +188,15 @@
                     });
                 }
 
+                function deleteCard(cardID){
+                    
+                    setCards(prevCards => prevCards.filter(card => !selectedCards.has(card.id)))
+                    setSelectedCards(new Set());
+
+                }
+
+                
+
                 return (
                     <div>
                         <h1>Assignment 3: Deck Of Cards</h1>
@@ -207,7 +221,7 @@
 
                         <div className = "btnRowStyle">
                             <button className = "btnStyle2" onClick = {resetDeck}>Reset</button>
-                            <button className = "btnStyle2">Toss</button>
+                            <button className = "btnStyle2" onClick = {deleteCard}>Toss</button>
                         </div>
 
                         <div className = "btnRowStyle">
