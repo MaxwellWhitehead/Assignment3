@@ -91,6 +91,11 @@
                 color: white;
             }
 
+            .btnStyle3{
+                background-color: purple;
+                color: white;
+            }
+
             button{
                 height: 100px;
                 width: 70%;
@@ -126,7 +131,7 @@
 
             //https://stackoverflow.com/questions/58806883/how-to-use-set-with-reacts-usestate
 
-            //TODO: Work on Toss, Wildcard, and Regroup buttons next (starting with toss)
+            //TODO: Work on Wildcard, and Regroup buttons next 
 
             function CreateDeck(){
                 const [cards, setCards] = React.useState([]);
@@ -195,8 +200,6 @@
 
                 }
 
-                
-
                 return (
                     <div>
                         <h1>Assignment 3: Deck Of Cards</h1>
@@ -225,8 +228,8 @@
                         </div>
 
                         <div className = "btnRowStyle">
-                            <button>Wildcard</button>
-                            <button>regroup</button>
+                            <button className = "btnStyle3">Wildcard</button>
+                            <button className = "btnStyle3">regroup</button>
                         </div>
                         
                     </div>
