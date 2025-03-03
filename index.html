@@ -190,7 +190,7 @@
 
                 function deleteCard(cardID){
 
-                    setCards(cardId);
+                    setCards(prevCards => prevCards.filter(card => !selectedCards.has(card.id)))
                     setSelectedCards(new Set());
 
                 }
